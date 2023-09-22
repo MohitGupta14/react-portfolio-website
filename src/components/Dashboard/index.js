@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Home from "./home";
 import Login from '../Login';
@@ -9,20 +9,20 @@ const Dashboard = () => {
     const auth = getAuth();
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if(user) {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
                 setUser(user);
             } else {
                 setUser(null);
             }
-        })
-    }, []);
-
+        });
+        return () => unsubscribe();
+    }, [auth]);
 
     return (
-       <div>
-           {user ? <Home /> : <Login />}
-       </div>
+        <div>
+            {user ? <Home /> : <Login />}
+        </div>
     )
 }
 
