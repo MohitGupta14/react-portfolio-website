@@ -1,6 +1,6 @@
 {
-  "homepage": "https://mohitgupta14.github.io/MohitGupta/",
-  "name": "MohitGupta",
+  "homepage": "https://mohitgupta14.github.io/mohit-gupta-portfolio/",
+  "name": "react-portfolio-website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,6 +24,7 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "sass": "^1.49.9",
+    "typescript": "^5.2.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
