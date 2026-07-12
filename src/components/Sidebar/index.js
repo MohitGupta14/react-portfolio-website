@@ -1,6 +1,6 @@
 import './index.scss'
 import { useState } from 'react'
-import LogoS from '../../assets/images/logo-s.png'
+import Photo from '../../assets/images/myimage.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -15,105 +15,83 @@ import {
   faSuitcase,
   faBars,
   faClose,
+  faLaptopCode,
 } from '@fortawesome/free-solid-svg-icons'
-import { Link, NavLink } from 'react-router-dom'
+
+const navItems = [
+  { id: 'hero', icon: faHome, label: 'HOME' },
+  { id: 'experience', icon: faUser, label: 'EXPERIENCE' },
+  { id: 'skills', icon: faLaptopCode, label: 'SKILLS' },
+  { id: 'projects', icon: faSuitcase, label: 'PROJECTS' },
+  { id: 'contact', icon: faEnvelope, label: 'CONTACT' },
+]
 
 const Sidebar = () => {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(false)
+
+  const handleNav = (id) => {
+    setShowNav(false)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <div className="nav-bar">
-      <Link 
-        className="logo"
-        to="/"
-        onClick={() => setShowNav(false)}>
-        <img src={LogoS} alt="Logo" />
-      </Link>
-      <nav className={showNav ? 'mobile-show' : ''}>
-        <NavLink 
-          exact="true"
-          activeclassname="active"
-          to="/"
-          onClick={() => setShowNav(false)}>
-          <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
-        </NavLink>
-        <NavLink 
-          activeclassname="active"
-          className="about-link"
-          to="/about"
-          onClick={() => setShowNav(false)}>
-          <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
-        </NavLink>
-        <NavLink
-          activeclassname="active"
-          className="portfolio-link"
-          to="/portfolio"
-          onClick={() => setShowNav(false)}
-        >
-          <FontAwesomeIcon icon={faSuitcase} color="#4d4d4e" />
-        </NavLink>
-        <NavLink
-          activeclassname="active"
-          className="contact-link"
-          to="/contact"
-          onClick={() => setShowNav(false)}
-        >
-          <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
-        </NavLink>
-        <FontAwesomeIcon 
-          onClick={() => setShowNav(false)}
-          icon={faClose}
-          color="#ffd700"
-          size="3x"
-          className='close-icon' />
+      <div className="nav-top">
+        <a className="nav-logo" href="#hero" onClick={(e) => { e.preventDefault(); handleNav('hero') }}>
+          <img src={Photo} alt="Mohit Gupta" />
+        </a>
+
+        <nav className="desktop-nav">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              className={`${item.id}-link`}
+              href={`#${item.id}`}
+              onClick={(e) => { e.preventDefault(); handleNav(item.id) }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <ul className="desktop-socials">
+          <li>
+            <a href="https://linkedin.com/in/mohit-gupta2121/" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/MohitGupta14" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/DarkMohit001" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+          </li>
+        </ul>
+
+        <FontAwesomeIcon
+          onClick={() => setShowNav(!showNav)}
+          icon={showNav ? faClose : faBars}
+          className="hamburger-icon"
+        />
+      </div>
+
+      <nav className={`mobile-nav ${showNav ? 'mobile-show' : ''}`}>
+        {navItems.map((item) => (
+          <a
+            key={item.id}
+            className={`${item.id}-link`}
+            href={`#${item.id}`}
+            onClick={(e) => { e.preventDefault(); handleNav(item.id) }}
+          >
+            <FontAwesomeIcon icon={item.icon} />
+            <span>{item.label}</span>
+          </a>
+        ))}
       </nav>
-      <ul>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/mohit-gupta2121/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faLinkedin}
-              color="#4d4d4e"
-              className="anchor-icon"
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/MohitGupta14"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faGithub}
-              color="#4d4d4e"
-              className="anchor-icon"
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitter.com/DarkMohit001"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <FontAwesomeIcon
-              icon={faTwitter}
-              color="#4d4d4e"
-              className="anchor-icon"
-            />
-          </a>
-        </li>
-      </ul>
-      <FontAwesomeIcon 
-          onClick={() => setShowNav(true)}
-          icon={faBars}
-          color="#ffd700"
-          size="3x"
-          className='hamburger-icon' />
     </div>
   )
 }

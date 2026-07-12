@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Vyaay",
+    "description": "Full-stack bill-splitting app with automated expense splitting, real-time balance tracking, and flexible group expense sharing.",
+    "tags": ["Next.js 14", "TypeScript", "PostgreSQL", "Prisma", "Redux", "NextAuth.js", "Tailwind CSS"],
+    "github": "https://github.com/MohitGupta14/Vyaay",
+    "featured": true,
+    "highlights": [
+      "Mobile-first UI with custom animations and interactive modals",
+      "RESTful APIs on Node.js with PostgreSQL via Prisma ORM",
+      "Secure authentication with NextAuth.js"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "ChatCDP",
+    "description": "AI-powered conversational analytics platform with usage-based subscription billing.",
+    "tags": ["Python", "Flask", "PostgreSQL", "Stripe", "AI/ML"],
+    "github": null,
+    "live": null,
+    "featured": true,
+    "highlights": [
+      "Conversational interface for analytics data",
+      "Stripe integration for subscription billing",
+      "Scalable backend architecture"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "MedAssist",
+    "description": "Healthcare assistant application for managing medical records and appointments.",
+    "tags": ["React", "Node.js", "MongoDB", "Express.js"],
+    "github": "https://github.com/MohitGupta14/MedAssist",
+    "featured": false,
+    "highlights": [
+      "Medical records management",
+      "Appointment scheduling system"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Lets-Chat",
+    "description": "Real-time chat application with messaging, user authentication, and friend system.",
+    "tags": ["React", "Socket.io", "Node.js", "Express.js", "MongoDB"],
+    "github": "https://github.com/MohitGupta14/Lets-Chat",
+    "featured": false,
+    "highlights": [
+      "Real-time messaging with Socket.io",
+      "User authentication and friend system"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "TutCart",
+    "description": "Online education marketplace where teachers can register, create courses, and students can browse, enroll, and learn. Built during internship.",
+    "tags": ["MongoDB", "Express.js", "React", "Node.js", "Payment Gateway"],
+    "github": null,
+    "featured": false,
+    "highlights": [
+      "Designed and built the full backend using MERN stack",
+      "Integrated payment gateway for course purchases",
+      "Teacher registration, course management, and student enrollment system"
+    ]
+  }
+]

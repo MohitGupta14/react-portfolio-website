@@ -1,105 +1,111 @@
-import React, { useEffect, useState } from "react";
-import Loader from "react-loaders";
-import AnimatedLetters from "../AnimatedLetters";
-import "./index.scss";
-import { getDocs, collection } from 'firebase/firestore';
-import { db } from '../../firebase';
+import React, { useEffect, useState } from 'react'
+import Loader from 'react-loaders'
+import AnimatedLetters from '../AnimatedLetters'
+import projectsData from '../../data/projects.json'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import './index.scss'
 
-const Portfolio = () => { 
-    const [letterClass, setLetterClass] = useState('text-animate');
-    const [portfolio, setPortfolio] = useState([]);
+const Portfolio = () => {
+  const [letterClass, setLetterClass] = useState('text-animate')
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLetterClass('text-animate-hover');
-        }, 3000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLetterClass('text-animate-hover')
+    }, 3000)
 
-        return () => {
-            clearTimeout(timer);
-        }
-    });
-
-    useEffect(() => {
-        getPortfolio();
-    }, []);
-
-    const getPortfolio = async () => {
-        const querySnapshot = await getDocs(collection(db, 'portfolio'));
-        setPortfolio(querySnapshot.docs.map((doc) => doc.data()));
+    return () => {
+      clearTimeout(timer)
     }
+  }, [])
 
-    const renderPortfolio = (portfolio) => {
-        return (
-            <div className="images-container">
-                {
-                    portfolio.map((port, idx) => {
-                        return (
-                            <div className="image-box" key={idx}>
-                                <img 
-                                src=<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MohitGupta14&layout=compact&theme=tokyonight" alt="Top Langs" />
-                                className="portfolio-image"
-                                alt="portfolio" />
-                                <div className="content">
-                                    <p className="title">{port.name}</p>
-                                    <h4 className="description">{port.description}</h4>
-                                    <button
-                                        className="btn"
-                                        onClick={() => window.open(port.url)}
-                                    >View</button>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        );
-    }
+  const featuredProjects = projectsData.filter((p) => p.featured)
+  const otherProjects = projectsData.filter((p) => !p.featured)
 
+  const renderProjectCard = (project) => (
+    <div className="project-card" key={project.id}>
+      <div className="project-card-inner">
+        <div className="project-header">
+          <span className="project-number">
+            {String(project.id).padStart(2, '0')}
+          </span>
+          <div className="project-links">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className="project-link"
+                title="GitHub"
+              >
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+            )}
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noreferrer"
+                className="project-link"
+                title="Live Demo"
+              >
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+              </a>
+            )}
+          </div>
+        </div>
+        <h3 className="project-name">{project.name}</h3>
+        <p className="project-description">{project.description}</p>
+        {project.highlights && (
+          <ul className="project-highlights">
+            {project.highlights.map((h, i) => (
+              <li key={i}>{h}</li>
+            ))}
+          </ul>
+        )}
+        <div className="project-tags">
+          {project.tags.map((tag, i) => (
+            <span className="project-tag" key={i}>{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
 
-    return (
-        <>
-            <div className="container portfolio-page">
-                <h1 className="page-title">
-                    <AnimatedLetters
-                        letterClass={letterClass}
-                        strArray={"Portfolio".split("")}
-                        idx={15}
-                    />
-                </h1>
-                <div>{renderPortfolio(portfolio)}</div>
-                <div>
-                   
-                <div className="graph">
-                
-                </div>
-                </div>
+  return (
+    <>
+      <div className="container portfolio-page">
+        <h1 className="page-title">
+          <AnimatedLetters
+            letterClass={letterClass}
+            strArray={'Projects'.split('')}
+            idx={15}
+          />
+        </h1>
 
-                <div className = "project-1">
-                    <a href="https://github.com/MohitGupta14/MedAssist">
-                    <img src="https://github-readme-stats.vercel.app/api/pin/?username=MohitGupta14&repo=MedAssist&theme=dark" alt="Med Assist" />
-                </a>
-                </div>
-                <div className = "project-2">
-                    <a href="https://github.com/MohitGupta14/Lets-Chat">
-                    <img src="https://github-readme-stats.vercel.app/api/pin/?username=MohitGupta14&repo=Lets-Chat&theme=dark" alt="Chat App" />
-                </a>
-                 </div>
-                 <div className = "project-3">
-                    <a href="https://github.com/MohitGupta14/SalaryPredictor">
-                    <img src="https://github-readme-stats.vercel.app/api/pin/?username=MohitGupta14&repo=SalaryPredictor&theme=dark" alt="Salary Predictor" />
-                </a>
-                </div>
-                
-                <div className="stats">
-                <a href="https://github-readme-activity-graph.vercel.app">
-                    <img src="https://github-readme-activity-graph.vercel.app/graph?username=MohitGupta14&theme=react-dark" alt="Mohit Gupta Github Activity Graph" width={700} />
-                    </a>
-                </div>
-                
-            </div>
-            <Loader type="pacman" />
-        </>
-    );
+        <div className="featured-projects">
+          {featuredProjects.map(renderProjectCard)}
+        </div>
+
+        <h2 className="other-projects-heading">Other Notable Projects</h2>
+        <div className="other-projects">
+          {otherProjects.map(renderProjectCard)}
+        </div>
+
+        <div className="stats">
+          <a href="https://github.com/MohitGupta14" target="_blank" rel="noreferrer">
+            <img
+              src="https://github-readme-activity-graph.vercel.app/graph?username=MohitGupta14&theme=react-dark"
+              alt="Mohit Gupta GitHub Activity Graph"
+              className="activity-graph"
+            />
+          </a>
+        </div>
+      </div>
+      <Loader type="pacman" />
+    </>
+  )
 }
 
-export default Portfolio;
+export default Portfolio

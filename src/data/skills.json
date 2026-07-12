@@ -1,0 +1,96 @@
+{
+  "categories": [
+    {
+      "name": "Languages",
+      "icon": "faCode",
+      "skills": [
+        { "name": "Python", "level": 90 },
+        { "name": "JavaScript", "level": 90 },
+        { "name": "TypeScript", "level": 85 },
+        { "name": "Java", "level": 80 },
+        { "name": "C++", "level": 70 }
+      ]
+    },
+    {
+      "name": "Backend & Frameworks",
+      "icon": "faServer",
+      "skills": [
+        { "name": "Flask", "level": 90 },
+        { "name": "Django", "level": 75 },
+        { "name": "Node.js", "level": 85 },
+        { "name": "Express.js", "level": 85 },
+        { "name": "FastAPI", "level": 80 },
+        { "name": "Spring Boot", "level": 75 }
+      ]
+    },
+    {
+      "name": "AI / LLM Development",
+      "icon": "faBrain",
+      "skills": [
+        { "name": "LangChain", "level": 85 },
+        { "name": "LlamaIndex", "level": 80 },
+        { "name": "OpenAI API", "level": 85 },
+        { "name": "Gemini API", "level": 85 },
+        { "name": "RAG Pipelines", "level": 80 },
+        { "name": "Vector Databases", "level": 75 },
+        { "name": "Prompt Engineering", "level": 85 }
+      ]
+    },
+    {
+      "name": "Databases & Caching",
+      "icon": "faDatabase",
+      "skills": [
+        { "name": "PostgreSQL", "level": 85 },
+        { "name": "MongoDB", "level": 80 },
+        { "name": "DocumentDB", "level": 75 },
+        { "name": "SQL", "level": 85 },
+        { "name": "Redis", "level": 75 }
+      ]
+    },
+    {
+      "name": "Messaging & Data Engineering",
+      "icon": "faStream",
+      "skills": [
+        { "name": "Apache Kafka", "level": 75 },
+        { "name": "AWS SQS", "level": 80 },
+        { "name": "Apache Spark", "level": 70 },
+        { "name": "PySpark", "level": 70 },
+        { "name": "Snowflake", "level": 65 }
+      ]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "icon": "faCloud",
+      "skills": [
+        { "name": "AWS", "level": 80 },
+        { "name": "Docker", "level": 80 },
+        { "name": "Kubernetes", "level": 70 },
+        { "name": "GCP", "level": 75 },
+        { "name": "Dynatrace", "level": 75 },
+        { "name": "Git", "level": 90 },
+        { "name": "REST APIs", "level": 85 }
+      ]
+    },
+    {
+      "name": "Frontend",
+      "icon": "faDesktop",
+      "skills": [
+        { "name": "React.js", "level": 85 },
+        { "name": "Next.js", "level": 85 },
+        { "name": "Tailwind CSS", "level": 85 },
+        { "name": "Redux", "level": 80 }
+      ]
+    },
+    {
+      "name": "Core CS",
+      "icon": "faGraduationCap",
+      "skills": [
+        { "name": "DSA", "level": 85 },
+        { "name": "Low-Level Design", "level": 80 },
+        { "name": "System Design (HLD)", "level": 75 },
+        { "name": "Microservices", "level": 80 },
+        { "name": "Distributed Systems", "level": 75 }
+      ]
+    }
+  ]
+}

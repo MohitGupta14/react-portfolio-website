@@ -9,12 +9,249 @@
   overflow: hidden;
 }
 
-.tag{
-  color: #ffd700;
-  opacity: 0.6;
-  font-size: 18px;
-  font-family: 'La Belle Aurore', cursive;
+.about-intro {
+  margin-bottom: 30px;
+
+  p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #b0b0b0;
+  }
 }
+
+.section-heading {
+  color: #ffd700;
+  font-size: 20px;
+  font-family: 'Coolvetica', sans-serif;
+  font-weight: 400;
+  margin: 30px 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  padding-bottom: 10px;
+
+  .heading-icon {
+    font-size: 18px;
+  }
+}
+
+.experience-item {
+  margin-bottom: 24px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid #ffd700;
+  border-radius: 0 8px 8px 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-left-color: #ffaa00;
+    transform: translateX(4px);
+  }
+
+  .exp-header {
+    margin-bottom: 10px;
+
+    .exp-role {
+      font-size: 16px;
+      color: #fff;
+      margin: 0 0 4px 0;
+      font-family: 'Coolvetica', sans-serif;
+      font-weight: 400;
+    }
+
+    .exp-company {
+      font-size: 14px;
+      color: #ffd700;
+      font-weight: 600;
+      margin-right: 12px;
+    }
+
+    .exp-client {
+      font-size: 13px;
+      color: #888;
+      font-style: italic;
+      margin-right: 12px;
+    }
+
+    .exp-period {
+      font-size: 12px;
+      color: #666;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+  }
+
+  .exp-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+
+    li {
+      font-size: 13px;
+      color: #b0b0b0;
+      padding: 3px 0 3px 16px;
+      position: relative;
+      line-height: 1.7;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ffd700;
+      }
+    }
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    .exp-tag {
+      font-size: 11px;
+      color: #ffd700;
+      background: rgba(255, 215, 0, 0.1);
+      padding: 3px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+  }
+}
+
+.education-section {
+  .education-item {
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #ffd700;
+    border-radius: 0 8px 8px 0;
+
+    h3 {
+      font-size: 15px;
+      color: #fff;
+      margin: 0 0 4px 0;
+      font-family: 'Coolvetica', sans-serif;
+      font-weight: 400;
+    }
+
+    .edu-school {
+      font-size: 14px;
+      color: #ffd700;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .edu-period {
+      font-size: 12px;
+      color: #666;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+}
+
+.achievements-section {
+  .achievements-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateX(4px);
+    }
+
+    .achievement-icon {
+      color: #ffd700;
+      font-size: 22px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    strong {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      color: #888;
+      font-size: 12px;
+      margin: 0;
+      line-height: 1.6;
+    }
+  }
+}
+
+.hobbies-section {
+  .hobbies-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .hobby-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 215, 0, 0.04);
+      border-color: rgba(255, 215, 0, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .hobby-icon {
+      color: #ffd700;
+      font-size: 26px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    strong {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 6px;
+      font-family: 'Coolvetica', sans-serif;
+      font-weight: 400;
+    }
+
+    p {
+      color: #888;
+      font-size: 12px;
+      margin: 0;
+      line-height: 1.7;
+    }
+  }
+}
+
 .cubespinner {
   animation-name: spincube;
   animation-timing-function: ease-in-out;
@@ -28,14 +265,14 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    border: 1px solid #ccc;
-    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     text-align: center;
     font-size: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 20px 0px lightyellow;
+    box-shadow: 0 0 20px 0px rgba(255, 215, 0, 0.1);
   }
 
   .face1 {

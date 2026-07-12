@@ -1,21 +1,54 @@
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font: 300 11px/1.4 'Helvetica Neue', sans-serif;
+  font: 300 11px/1.5 'Helvetica Neue', sans-serif;
   color: #444;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #022c43;
+  background: #0a192f;
   overflow: hidden;
   display: block;
 }
 
-.dashboard {
-  margin-top: 200px;
-  margin-left: 200px;
+::selection {
+  background: rgba(255, 215, 0, 0.3);
+  color: #fff;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 215, 0, 0.35) transparent;
+  box-sizing: border-box;
+}
+
+*:hover {
+  scrollbar-color: rgba(255, 215, 0, 0.6) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255, 215, 0, 0.4), rgba(255, 170, 0, 0.2));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(255, 215, 0, 0.7), rgba(255, 170, 0, 0.5));
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 @media screen and (max-width: 1200px) {
