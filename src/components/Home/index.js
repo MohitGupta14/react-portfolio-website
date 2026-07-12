@@ -22,7 +22,6 @@ import {
   faExternalLinkAlt,
   faMapMarkerAlt,
   faWandMagicSparkles,
-  faDownload,
 } from '@fortawesome/free-solid-svg-icons'
 import experienceData from '../../data/experience.json'
 import skillsData from '../../data/skills.json'
@@ -168,9 +167,9 @@ const Home = () => {
                 <FontAwesomeIcon icon={faEnvelope} />
                 Get in Touch
               </a>
-              <a href="/resume.pdf" download className="btn-ghost">
-                <FontAwesomeIcon icon={faDownload} />
-                Download CV
+              <a href="https://drive.google.com/file/d/1nJJJJODFCuYacwRjiyZ5oF6XhlBNdT4H/view?usp=sharing" target="_blank" rel="noreferrer" className="btn-ghost">
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                View Resume
               </a>
               <button className="btn-ghost" onClick={() => scrollTo('experience')}>
                 <FontAwesomeIcon icon={faArrowDown} />
