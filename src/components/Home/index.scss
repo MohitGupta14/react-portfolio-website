@@ -767,13 +767,20 @@
 /* ═══════════════════════════════════════════════════
    MOBILE
    ═══════════════════════════════════════════════════ */
-@media screen and (max-width: 1200px) {
-  .single-page {
-    padding-left: 0;
-  }
-}
 
 @media screen and (max-width: 768px) {
+  .hero-bg-orb {
+    display: none;
+  }
+
+  .chat-trigger .trigger-glow {
+    animation: none;
+  }
+
+  .trigger-sparkle {
+    animation: none;
+  }
+
   .hero-section {
     padding: 48px 20px 28px;
     min-height: auto;

@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import Loader from 'react-loaders'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faLinkedin,
@@ -312,7 +311,6 @@ const Home = () => {
           </div>
         </section>
       </div>
-      <Loader type="pacman" />
     </>
   )
 }
