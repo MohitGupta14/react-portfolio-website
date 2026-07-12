@@ -28,12 +28,14 @@ const ChatWidget = () => {
   }, [])
 
   useEffect(() => {
-    scrollToBottom()
+    if (messages.length > 0) {
+      scrollToBottom()
+    }
   }, [messages, scrollToBottom])
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      inputRef.current.focus()
+      inputRef.current.focus({ preventScroll: true })
     }
   }, [isOpen])
 

@@ -7,6 +7,11 @@
   max-width: 560px;
   position: relative;
   z-index: 10;
+  height: 52px;
+
+  &.open {
+    height: 420px;
+  }
 }
 
 /* ─── TRIGGER (collapsed) ─── */
@@ -119,7 +124,7 @@
 @keyframes chatExpand {
   from {
     opacity: 0;
-    transform: scale(0.97) translateY(4px);
+    transform: scale(0.92) translateY(12px);
   }
   to {
     opacity: 1;
@@ -228,6 +233,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  animation: welcomeFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 
   svg {
     color: #ffd700;
@@ -241,6 +247,18 @@
   line-height: 1.6;
   margin: 0 0 14px 0;
   max-width: 300px;
+  animation: welcomeFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes welcomeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .suggestions {
@@ -260,13 +278,31 @@
   border-radius: 8px;
   font-size: 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: 'Helvetica Neue', sans-serif;
+  animation: suggestionSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &:nth-child(1) { animation-delay: 0.3s; }
+  &:nth-child(2) { animation-delay: 0.4s; }
+  &:nth-child(3) { animation-delay: 0.5s; }
+  &:nth-child(4) { animation-delay: 0.6s; }
 
   &:hover {
     background: rgba(255, 215, 0, 0.05);
     border-color: rgba(255, 215, 0, 0.2);
     color: #ffd700;
+    transform: translateX(4px);
+  }
+}
+
+@keyframes suggestionSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -275,18 +311,6 @@
   display: flex;
   gap: 8px;
   margin-bottom: 10px;
-  animation: bubbleIn 0.3s ease;
-}
-
-@keyframes bubbleIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .bubble-avatar {
@@ -317,6 +341,7 @@
 
 .chat-bubble.user {
   justify-content: flex-end;
+  animation: bubbleSlideRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   .bubble-text {
     background: linear-gradient(135deg, #ffd700, #f0c000);
@@ -327,16 +352,42 @@
   }
 }
 
-.chat-bubble.assistant .bubble-text {
-  background: rgba(255, 255, 255, 0.05);
-  color: #bbb;
-  border-radius: 10px 10px 10px 2px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  max-width: 82%;
+.chat-bubble.assistant {
+  animation: bubbleSlideLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
-  &.error {
-    color: #ff6b6b;
-    border-color: rgba(255, 107, 107, 0.2);
+  .bubble-text {
+    background: rgba(255, 255, 255, 0.05);
+    color: #bbb;
+    border-radius: 10px 10px 10px 2px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    max-width: 82%;
+
+    &.error {
+      color: #ff6b6b;
+      border-color: rgba(255, 107, 107, 0.2);
+    }
+  }
+}
+
+@keyframes bubbleSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes bubbleSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
@@ -439,6 +490,7 @@
 @media screen and (max-width: 768px) {
   .chat-widget {
     max-width: 100%;
+    height: auto;
   }
 
   .trigger-inner {

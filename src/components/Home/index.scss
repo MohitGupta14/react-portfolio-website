@@ -28,12 +28,84 @@
 /* ─── SCROLL ANIMATIONS ─── */
 .scroll-section {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 
   &.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ─── STAGGER CHILDREN ─── */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95) rotateX(4deg);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+  transform-origin: center bottom;
+  perspective: 800px;
+
+  &.stagger-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0);
+  }
+}
+
+/* Alternate slide directions for timeline items */
+.timeline .stagger-child:nth-child(odd) {
+  transform: translateX(-30px) scale(0.97) rotateY(3deg);
+  transform-origin: left center;
+
+  &.stagger-visible {
+    transform: translateX(0) scale(1) rotateY(0);
+  }
+}
+
+.timeline .stagger-child:nth-child(even) {
+  transform: translateX(30px) scale(0.97) rotateY(-3deg);
+  transform-origin: right center;
+
+  &.stagger-visible {
+    transform: translateX(0) scale(1) rotateY(0);
+  }
+}
+
+/* Skill cards — stagger from bottom with scale */
+.skill-card.stagger-child:nth-child(1) { transform: translateY(50px) scale(0.9); }
+.skill-card.stagger-child:nth-child(2) { transform: translateY(50px) scale(0.9); }
+.skill-card.stagger-child:nth-child(3) { transform: translateY(50px) scale(0.9); }
+.skill-card.stagger-child:nth-child(4) { transform: translateY(50px) scale(0.9); }
+
+.skill-card.stagger-child.stagger-visible {
+  transform: translateY(0) scale(1);
+}
+
+/* Project cards — scale up from center */
+.projects-featured .stagger-child {
+  transform: translateY(30px) scale(0.92);
+  transform-origin: center center;
+
+  &.stagger-visible {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.projects-others .stagger-child {
+  transform: translateY(30px) scale(0.92);
+
+  &.stagger-visible {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Achievements — slide in from left */
+.achievements-row .stagger-child {
+  transform: translateX(-40px) scale(0.95);
+
+  &.stagger-visible {
+    transform: translateX(0) scale(1);
   }
 }
 
@@ -51,10 +123,15 @@
 
   &:before {
     content: '';
-    width: 40px;
+    width: 0;
     height: 1px;
     background: rgba(255, 215, 0, 0.4);
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
   }
+}
+
+.scroll-section.visible .section-label:before {
+  width: 40px;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -120,6 +197,72 @@
   50% { opacity: 0.15; transform: translate(-50%, -50%) scale(1.1); }
 }
 
+/* ─── FLOATING PARTICLES ─── */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+
+  span {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 215, 0, 0.6);
+    border-radius: 50%;
+    animation: particleFloat linear infinite;
+    will-change: transform;
+
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        left: random(100) * 1%;
+        top: random(100) * 1%;
+        width: (random(3) + 2) * 1px;
+        height: (random(3) + 2) * 1px;
+        opacity: (random(5) + 5) * 0.06;
+        animation-duration: (random(15) + 10) * 1s;
+        animation-delay: (random(10) * -1) * 1s;
+      }
+    }
+  }
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-30px) translateX(15px); }
+  50% { transform: translateY(-15px) translateX(-10px); }
+  75% { transform: translateY(-40px) translateX(20px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* ─── GLOWING CTA ─── */
+.hero-actions .btn-primary {
+  position: relative;
+  animation: ctaGlow 3s ease-in-out infinite;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 170, 0, 0.05));
+    z-index: -1;
+    filter: blur(14px);
+    animation: ctaGlowPulse 3s ease-in-out infinite;
+  }
+}
+
+@keyframes ctaGlow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(255, 215, 0, 0.1); }
+  50% { box-shadow: 0 4px 30px rgba(255, 215, 0, 0.25), 0 0 60px rgba(255, 215, 0, 0.06); }
+}
+
+@keyframes ctaGlowPulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
 /* ─── CENTER COLUMN ─── */
 .hero-center {
   position: relative;
@@ -130,6 +273,8 @@
   text-align: center;
   max-width: 640px;
   width: 100%;
+  transition: opacity 0.1s linear, transform 0.1s linear, filter 0.1s linear;
+  will-change: transform, opacity, filter;
 }
 
 /* ─── BADGE ─── */
@@ -182,6 +327,22 @@
   font-weight: 300;
   letter-spacing: 3px;
   text-transform: uppercase;
+}
+
+.hero-focus {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 10px 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero-title-sep {
+  color: #ffd700;
+  margin: 0 4px;
+  opacity: 0.5;
 }
 
 /* ─── SUB ─── */
@@ -396,12 +557,13 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 28px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 215, 0, 0.15);
-    transform: translateX(4px);
+    transform: translateX(6px) scale(1.01);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -545,12 +707,13 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 26px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 215, 0, 0.15);
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
   }
 
   h3 {
@@ -616,13 +779,13 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 28px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 215, 0, 0.15);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   }
 
   &.featured {
@@ -769,8 +932,37 @@
    ═══════════════════════════════════════════════════ */
 
 @media screen and (max-width: 768px) {
+  .scroll-section {
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .stagger-child {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .section-label:before {
+    transition: none;
+  }
+
+  .hero-particles span {
+    animation: none;
+    display: none;
+  }
+
   .hero-bg-orb {
     display: none;
+  }
+
+  .hero-actions .btn-primary {
+    animation: none;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.15);
+
+    &::after {
+      display: none;
+    }
   }
 
   .chat-trigger .trigger-glow {
@@ -789,6 +981,9 @@
 
   .hero-center {
     padding-top: 16px;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
 
   .hero-badge {
@@ -808,6 +1003,11 @@
     margin-bottom: 10px;
   }
 
+  .hero-focus {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
   .hero-sub {
     font-size: 14px;
     margin-bottom: 24px;
@@ -820,6 +1020,8 @@
     margin-bottom: 28px;
     width: 100%;
     box-sizing: border-box;
+    overflow-x: auto;
+    flex-wrap: nowrap;
   }
 
   .hero-stat-num {
@@ -886,6 +1088,12 @@
 
   .timeline-card {
     padding: 22px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   .timeline-header h3 {
@@ -903,6 +1111,11 @@
 
   .skill-card {
     padding: 22px;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   .projects-featured,
@@ -913,6 +1126,11 @@
 
   .project-card {
     padding: 22px;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   .achievements-row {
@@ -935,6 +1153,11 @@
 }
 
 @media screen and (max-width: 480px) {
+  .hero-particles span {
+    animation: none;
+    display: none;
+  }
+
   .hero-section {
     padding: 36px 16px 20px;
   }
@@ -945,6 +1168,17 @@
 
   .hero-title {
     font-size: 12px;
+  }
+
+  .hero-focus {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-center {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
 
   .hero-stats-row {
@@ -969,6 +1203,11 @@
 
   .timeline-card {
     padding: 18px;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   .timeline-header h3 {
@@ -977,6 +1216,11 @@
 
   .project-card {
     padding: 18px;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   .project-card h3 {

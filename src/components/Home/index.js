@@ -51,7 +51,9 @@ const topTech = [
 
 const Home = () => {
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const isMobile = window.innerWidth <= 768
+
+    const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -59,14 +61,59 @@ const Home = () => {
           }
         })
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
     )
 
     document.querySelectorAll('.scroll-section').forEach((el) => {
-      observer.observe(el)
+      sectionObserver.observe(el)
     })
 
-    return () => observer.disconnect()
+    if (!isMobile) {
+      const staggerObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const children = entry.target.querySelectorAll('.stagger-child')
+              children.forEach((child, i) => {
+                child.style.transitionDelay = `${i * 0.1}s`
+                child.classList.add('stagger-visible')
+              })
+              staggerObserver.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      )
+
+      document.querySelectorAll('.stagger-group').forEach((el) => {
+        staggerObserver.observe(el)
+      })
+
+      const heroContent = document.querySelector('.hero-center')
+      const handleScroll = () => {
+        if (!heroContent) return
+        const scrollY = window.scrollY || document.querySelector('.single-page')?.scrollTop || 0
+        const factor = Math.min(scrollY / 600, 1)
+        heroContent.style.opacity = 1 - factor * 0.9
+        heroContent.style.transform = `translateY(${scrollY * 0.35}px) scale(${1 - factor * 0.08})`
+        heroContent.style.filter = `blur(${factor * 4}px)`
+      }
+
+      const scrollContainer = document.querySelector('.single-page')
+      if (scrollContainer) {
+        scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
+      }
+
+      return () => {
+        sectionObserver.disconnect()
+        staggerObserver.disconnect()
+        if (scrollContainer) {
+          scrollContainer.removeEventListener('scroll', handleScroll)
+        }
+      }
+    }
+
+    return () => sectionObserver.disconnect()
   }, [])
 
   const scrollTo = (id) => {
@@ -81,6 +128,12 @@ const Home = () => {
       <div className="single-page">
         {/* ─── HERO ─── */}
         <section id="hero" className="scroll-section hero-section">
+          <div className="hero-particles">
+            <span /><span /><span /><span /><span />
+            <span /><span /><span /><span /><span />
+            <span /><span /><span /><span /><span />
+            <span /><span /><span /><span /><span />
+          </div>
           <div className="hero-bg-orb orb-1" />
           <div className="hero-bg-orb orb-2" />
           <div className="hero-bg-orb orb-3" />
@@ -98,10 +151,8 @@ const Home = () => {
             <p className="hero-title">
               Full-Stack Software Engineer
             </p>
-
-            <p className="hero-sub">
-              Building AI-powered products &amp; scalable systems. GSoC{' '}
-              <span className="hero-accent">'23</span>
+            <p className="hero-focus">
+              AI <span className="hero-title-sep">·</span> Backend <span className="hero-title-sep">·</span> Cloud
             </p>
 
             <ChatWidget />
@@ -118,6 +169,11 @@ const Home = () => {
             </div>
 
             <div className="hero-stats-row">
+              <div className="hero-stat">
+                <span className="hero-stat-num">GSoC</span>
+                <span className="hero-stat-label">'23 Alumni</span>
+              </div>
+              <div className="hero-stat-divider" />
               <div className="hero-stat">
                 <span className="hero-stat-num">3+</span>
                 <span className="hero-stat-label">Years</span>
@@ -168,9 +224,9 @@ const Home = () => {
             <FontAwesomeIcon icon={faBuilding} />
             <span>Experience</span>
           </div>
-          <div className="timeline">
+          <div className="timeline stagger-group">
             {experienceData.map((exp) => (
-              <div className="timeline-item" key={exp.id}>
+              <div className="timeline-item stagger-child" key={exp.id}>
                 <div className="timeline-dot" />
                 <div className="timeline-card">
                   <div className="timeline-header">
@@ -202,16 +258,16 @@ const Home = () => {
               <span>Jawaharlal Nehru University · 2020 – 2024</span>
             </div>
           </div>
-          <div className="achievements-row">
-            <div className="achievement">
+          <div className="achievements-row stagger-group">
+            <div className="achievement stagger-child">
               <FontAwesomeIcon icon={faAward} />
               <span>GSoC 2023 — Top 10% globally</span>
             </div>
-            <div className="achievement">
+            <div className="achievement stagger-child">
               <FontAwesomeIcon icon={faUsers} />
               <span>Led 200+ developer community</span>
             </div>
-            <div className="achievement">
+            <div className="achievement stagger-child">
               <FontAwesomeIcon icon={faLaptopCode} />
               <span>300+ DSA problems solved</span>
             </div>
@@ -224,9 +280,9 @@ const Home = () => {
             <FontAwesomeIcon icon={faLaptopCode} />
             <span>Skills</span>
           </div>
-          <div className="skills-grid">
+          <div className="skills-grid stagger-group">
             {skillsData.categories.map((cat, ci) => (
-              <div className="skill-card" key={ci}>
+              <div className="skill-card stagger-child" key={ci}>
                 <h3>
                   <FontAwesomeIcon icon={skillIconMap[cat.icon] || faLaptopCode} />
                   {cat.name}
@@ -247,9 +303,9 @@ const Home = () => {
             <FontAwesomeIcon icon={faLaptopCode} />
             <span>Projects</span>
           </div>
-          <div className="projects-featured">
+          <div className="projects-featured stagger-group">
             {featuredProjects.map((p) => (
-              <div className="project-card featured" key={p.id}>
+              <div className="project-card featured stagger-child" key={p.id}>
                 <div className="project-top">
                   <span className="project-num">{String(p.id).padStart(2, '0')}</span>
                   <div className="project-links">
@@ -268,9 +324,9 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <div className="projects-others">
+          <div className="projects-others stagger-group">
             {otherProjects.map((p) => (
-              <div className="project-card" key={p.id}>
+              <div className="project-card stagger-child" key={p.id}>
                 <div className="project-top">
                   <span className="project-num">{String(p.id).padStart(2, '0')}</span>
                   <div className="project-links">
