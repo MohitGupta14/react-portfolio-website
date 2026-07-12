@@ -1092,6 +1092,7 @@
   .projects-section,
   .contact-section {
     padding: 52px 20px;
+    overflow: hidden;
   }
 
   .section-label {
@@ -1100,8 +1101,25 @@
     letter-spacing: 3px;
   }
 
+  .timeline {
+    padding-left: 24px;
+
+    &:before {
+      left: 4px;
+    }
+  }
+
+  .timeline-dot {
+    left: -24px;
+    width: 8px;
+    height: 8px;
+  }
+
   .timeline-card {
-    padding: 22px;
+    padding: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    min-width: 0;
     transition: background 0.3s ease, border-color 0.3s ease;
 
     &:hover {
@@ -1111,25 +1129,46 @@
   }
 
   .timeline-header h3 {
-    font-size: 17px;
+    font-size: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .timeline-header .company {
+    display: block;
+    margin-top: 4px;
   }
 
   .highlights li {
     font-size: 13px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .skills-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+    overflow: hidden;
   }
 
   .skill-card {
     padding: 22px;
+    min-width: 0;
+    overflow: hidden;
 
     &:hover {
       transform: none;
       box-shadow: none;
     }
+
+    h3 {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+  }
+
+  .skill-pills {
+    gap: 6px;
   }
 
   .projects-featured,
@@ -1140,16 +1179,42 @@
 
   .project-card {
     padding: 22px;
+    min-width: 0;
+    overflow: hidden;
 
     &:hover {
       transform: none;
       box-shadow: none;
+    }
+
+    h3 {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    p {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+  }
+
+  .tags {
+    gap: 6px;
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
     }
   }
 
   .achievements-row {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .education-row {
+    flex-wrap: wrap;
+    word-wrap: break-word;
   }
 
   .contact-socials {
