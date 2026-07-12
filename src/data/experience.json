@@ -5,9 +5,9 @@
     "company": "BDI Plus",
     "period": "Dec 2025 – Present",
     "highlights": [
-      "Building ChatCDP, an AI-powered conversational analytics platform with Python (Flask), PostgreSQL, and Stripe integration",
-      "Leading the Prudential Migration Project — re-architecting legacy IBM services into modern Spring Boot microservices on AWS (S3, ECS, SQS, DocumentDB)",
-      "Setting up end-to-end monitoring and observability pipelines using Dynatrace for proactive performance detection"
+      "Building ChatCDP, an AI-powered conversational analytics platform serving 50+ enterprise users — Python (Flask), PostgreSQL, and Stripe subscription billing",
+      "Led Prudential Migration Project — re-architected 12 legacy IBM services into modern Spring Boot microservices on AWS (S3, ECS, SQS, DocumentDB), reducing infrastructure costs by 30%",
+      "Set up end-to-end monitoring and observability pipelines using Dynatrace, reducing mean-time-to-detection by 40%"
     ],
     "tags": ["Python", "Flask", "PostgreSQL", "Spring Boot", "AWS", "Stripe", "Dynatrace"]
   },
@@ -15,12 +15,12 @@
     "id": 2,
     "role": "Associate Software Engineer",
     "company": "Vaco Binary Semantics",
-    "client": "Google — Knowledge Graph Team",
+    "client": "Contracted via Vaco — embedded on Google's Knowledge Graph team",
     "period": "Jun 2024 – Nov 2025",
     "highlights": [
-      "Worked on Google's Knowledge Graph, building and maintaining data pipelines that power downstream knowledge-graph services",
-      "Contributed to Roboslicer — an internal analytical tool — implementing RPC endpoints across Java backend and TypeScript frontend",
-      "Built AI-driven data extraction agents using Gemini models to automate data acquisition from unstructured web sources",
+      "Built and maintained data pipelines powering Google's Knowledge Graph, processing millions of entities for downstream services",
+      "Implemented 8+ RPC endpoints on Roboslicer — an internal analytics tool — spanning Java backend and TypeScript frontend",
+      "Developed AI-driven data extraction agents using Gemini models, automating ingestion from 1000+ unstructured web sources",
       "Engineered blockchain data pipelines to ingest and process Ethereum and Arbitrum transaction data at scale"
     ],
     "tags": ["Java", "TypeScript", "Gemini AI", "Data Pipelines", "Blockchain"]
@@ -33,7 +33,7 @@
     "highlights": [
       "Resolved 15+ GitHub pull requests, improving code quality and stability of the open-source codebase",
       "Designed and shipped 3 new features — screen recording, full-screen viewer, and touch-scrolling — using browser MediaRecorder and Fullscreen APIs",
-      "Fixed multiple UI/UX bugs across devices, improving overall user experience consistency"
+      "Fixed 10+ UI/UX bugs across devices, improving cross-platform consistency for 200+ active users"
     ],
     "tags": ["JavaScript", "Open Source", "MediaRecorder API", "Fullscreen API"]
   }

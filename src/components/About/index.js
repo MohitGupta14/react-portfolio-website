@@ -127,7 +127,7 @@ const About = () => {
               <div className="achievement-item">
                 <FontAwesomeIcon icon={faLaptopCode} className="achievement-icon" />
                 <div>
-                  <strong>300+ DSA Problems</strong>
+                  <strong>400+ DSA Problems</strong>
                   <p>Solved on LeetCode and Coding Ninjas with consistent competitive programming practice</p>
                 </div>
               </div>

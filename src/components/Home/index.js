@@ -22,6 +22,7 @@ import {
   faExternalLinkAlt,
   faMapMarkerAlt,
   faWandMagicSparkles,
+  faDownload,
 } from '@fortawesome/free-solid-svg-icons'
 import experienceData from '../../data/experience.json'
 import skillsData from '../../data/skills.json'
@@ -155,12 +156,21 @@ const Home = () => {
               AI <span className="hero-title-sep">·</span> Backend <span className="hero-title-sep">·</span> Cloud
             </p>
 
+            <p className="hero-about">
+              I build scalable backend systems and AI-powered products. Previously at Google (via Vaco), now focused on
+              shipping production-grade software that handles real users and real data.
+            </p>
+
             <ChatWidget />
 
             <div className="hero-actions">
               <a href="mailto:mohitguptaofficial53@gmail.com" className="btn-primary">
                 <FontAwesomeIcon icon={faEnvelope} />
                 Get in Touch
+              </a>
+              <a href="/resume.pdf" download className="btn-ghost">
+                <FontAwesomeIcon icon={faDownload} />
+                Download CV
               </a>
               <button className="btn-ghost" onClick={() => scrollTo('experience')}>
                 <FontAwesomeIcon icon={faArrowDown} />
@@ -269,7 +279,7 @@ const Home = () => {
             </div>
             <div className="achievement stagger-child">
               <FontAwesomeIcon icon={faLaptopCode} />
-              <span>300+ DSA problems solved</span>
+              <span>400+ DSA problems solved</span>
             </div>
           </div>
         </section>

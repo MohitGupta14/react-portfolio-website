@@ -332,11 +332,20 @@
 .hero-focus {
   font-size: 14px;
   color: #666;
-  margin: 0 0 10px 0;
+  margin: 0 0 16px 0;
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: 300;
   letter-spacing: 4px;
   text-transform: uppercase;
+}
+
+.hero-about {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.8;
+  margin: 0 0 16px 0;
+  max-width: 480px;
+  text-align: center;
 }
 
 .hero-title-sep {
@@ -1008,6 +1017,11 @@
     letter-spacing: 2px;
   }
 
+  .hero-about {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
   .hero-sub {
     font-size: 14px;
     margin-bottom: 24px;
@@ -1173,6 +1187,11 @@
   .hero-focus {
     font-size: 11px;
     letter-spacing: 1.5px;
+  }
+
+  .hero-about {
+    font-size: 12px;
+    margin-bottom: 12px;
   }
 
   .hero-center {

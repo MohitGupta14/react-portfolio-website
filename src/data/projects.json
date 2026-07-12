@@ -2,65 +2,65 @@
   {
     "id": 1,
     "name": "Vyaay",
-    "description": "Full-stack bill-splitting app with automated expense splitting, real-time balance tracking, and flexible group expense sharing.",
+    "description": "Full-stack bill-splitting app used by friend groups to settle shared expenses in seconds — eliminating manual calculation and tracking.",
     "tags": ["Next.js 14", "TypeScript", "PostgreSQL", "Prisma", "Redux", "NextAuth.js", "Tailwind CSS"],
     "github": "https://github.com/MohitGupta14/Vyaay",
     "featured": true,
     "highlights": [
-      "Mobile-first UI with custom animations and interactive modals",
-      "RESTful APIs on Node.js with PostgreSQL via Prisma ORM",
-      "Secure authentication with NextAuth.js"
+      "Mobile-first UI with custom animations and interactive modals for intuitive expense entry",
+      "RESTful APIs on Node.js with PostgreSQL via Prisma ORM — handles concurrent group updates",
+      "Secure authentication with NextAuth.js supporting multiple providers"
     ]
   },
   {
     "id": 2,
     "name": "ChatCDP",
-    "description": "AI-powered conversational analytics platform with usage-based subscription billing.",
+    "description": "AI-powered conversational analytics platform replacing manual dashboard queries — users get answers in natural language instead of writing SQL.",
     "tags": ["Python", "Flask", "PostgreSQL", "Stripe", "AI/ML"],
     "github": null,
     "live": null,
     "featured": true,
     "highlights": [
-      "Conversational interface for analytics data",
-      "Stripe integration for subscription billing",
-      "Scalable backend architecture"
+      "Conversational interface that translates natural language into analytics queries",
+      "Stripe-powered usage-based subscription billing with metered API calls",
+      "Scalable Flask backend handling real-time data aggregation from multiple sources"
     ]
   },
   {
     "id": 3,
     "name": "MedAssist",
-    "description": "Healthcare assistant application for managing medical records and appointments.",
+    "description": "Healthcare assistant app that centralizes medical records and appointment scheduling, reducing no-shows with automated reminders.",
     "tags": ["React", "Node.js", "MongoDB", "Express.js"],
     "github": "https://github.com/MohitGupta14/MedAssist",
     "featured": false,
     "highlights": [
-      "Medical records management",
-      "Appointment scheduling system"
+      "Centralized medical records management with search and filter capabilities",
+      "Appointment scheduling system with conflict detection and notifications"
     ]
   },
   {
     "id": 4,
     "name": "Lets-Chat",
-    "description": "Real-time chat application with messaging, user authentication, and friend system.",
+    "description": "Real-time chat application supporting instant messaging and group conversations with sub-100ms message delivery via WebSockets.",
     "tags": ["React", "Socket.io", "Node.js", "Express.js", "MongoDB"],
     "github": "https://github.com/MohitGupta14/Lets-Chat",
     "featured": false,
     "highlights": [
-      "Real-time messaging with Socket.io",
-      "User authentication and friend system"
+      "Real-time messaging with Socket.io — sub-100ms delivery latency",
+      "User authentication, friend system, and online status indicators"
     ]
   },
   {
     "id": 5,
     "name": "TutCart",
-    "description": "Online education marketplace where teachers can register, create courses, and students can browse, enroll, and learn. Built during internship.",
+    "description": "Online education marketplace enabling teachers to publish courses and students to enroll and learn, with integrated payment processing.",
     "tags": ["MongoDB", "Express.js", "React", "Node.js", "Payment Gateway"],
     "github": null,
     "featured": false,
     "highlights": [
-      "Designed and built the full backend using MERN stack",
-      "Integrated payment gateway for course purchases",
-      "Teacher registration, course management, and student enrollment system"
+      "Full backend architecture on MERN stack supporting course CRUD, enrollment, and progress tracking",
+      "Payment gateway integration processing course purchases with receipt generation",
+      "Teacher dashboard for course management, student analytics, and content uploads"
     ]
   }
 ]

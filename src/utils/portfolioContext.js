@@ -48,6 +48,6 @@ B.Tech in Computer Science, Jawaharlal Nehru University (2020-2024)
 ACHIEVEMENTS:
 - GSoC 2023 — Top 10% globally
 - Led 200+ developer community
-- 300+ DSA problems solved
+- 400+ DSA problems solved
 - 15+ Pull Requests merged`
 }
